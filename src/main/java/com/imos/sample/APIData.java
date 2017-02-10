@@ -33,18 +33,6 @@ public class APIData {
 
     private String apiSuccess;
 
-//    private String apiDefine;
-//
-//    private String apiHeader;
-
-//    private String apiParamExample;
-//
-//    private String apiError;
-//
-//    private String apiErrorExample;
-//
-//    private String apiSuccessExample;
-
     private String apiMethod;
     
     private String apiUrl;
@@ -140,99 +128,6 @@ public class APIData {
     public void setApiUrl(String apiUrl) {
         this.apiUrl = apiUrl;
     }
-
-//    public String getApiDefine() {
-//        return apiDefine;
-//    }
-//
-//    public void setApiDefine(String apiDefine) {
-//        this.apiDefine = apiDefine;
-//    }
-//
-//    public String getApiHeader() {
-//        return apiHeader;
-//    }
-//
-//    public void setApiHeader(String apiHeader) {
-//        this.apiHeader = apiHeader;
-//    }
-
-//    public String getApiParamExample() {
-//        return apiParamExample;
-//    }
-//
-//    public void setApiParamExample(String apiParamExample) {
-//        this.apiParamExample = apiParamExample;
-//    }
-//
-//    public String getApiError() {
-//        return apiError;
-//    }
-//
-//    public void setApiError(String apiError) {
-//        this.apiError = apiError;
-//    }
-//
-//    public String getApiErrorExample() {
-//        return apiErrorExample;
-//    }
-//
-//    public void setApiErrorExample(String apiErrorExample) {
-//        this.apiErrorExample = apiErrorExample;
-//    }
-//
-//    public String getApiSuccessExample() {
-//        return apiSuccessExample;
-//    }
-//
-//    public void setApiSuccessExample(String apiSuccessExample) {
-//        this.apiSuccessExample = apiSuccessExample;
-//    }
-
-//    public String getMethod() {
-//        return method;
-//    }
-//
-//    public void setMethod(String method) {
-//        this.method = method;
-//    }
-//
-//    public String getUrl() {
-//        return url;
-//    }
-//
-//    public void setUrl(String url) {
-//        this.url = url;
-//    }
-
-//    @Override
-//    public String toString() {
-//        return "APIData{" + "api=" + api + ", apiUses=" + apiUses + ", apiVersion=" 
-//            + apiVersion + ", apiParam=" + apiParam + ", apiPermission=" + apiPermission 
-//            + ", apiDescription=" + apiDescription + ", apiName=" + apiName + ", apiGroup=" 
-//            + apiGroup + ", apiSuccess=" + apiSuccess + ", apiDefine=" + apiDefine 
-//            + ", apiHeader=" + apiHeader + ", apiParamExample=" + apiParamExample 
-//            + ", apiError=" + apiError + ", apiErrorExample=" + apiErrorExample 
-//            + ", apiSuccessExample=" + apiSuccessExample + ", method=" + method 
-//            + ", url=" + url + '}';
-//    }
-
-//    @Override
-//    public String toString() {
-//        return "APIData{" + "api=" + api + ", apiUses=" + apiUses + ", apiVersion=" 
-//            + apiVersion + ", apiParam=" + apiParam + ", apiPermission=" + apiPermission 
-//            + ", apiDescription=" + apiDescription + ", apiName=" + apiName + ", apiGroup=" 
-//            + apiGroup + ", apiSuccess=" + apiSuccess + ", apiDefine=" + apiDefine 
-//            + ", apiHeader=" + apiHeader + ", method=" + method + ", url=" + url + '}';
-//    }
-
-//    @Override
-//    public String toString() {
-//        return "APIData{" + "api=" + api + ", apiUses=" + apiUses + ", apiVersion=" 
-//            + apiVersion + ", apiParam=" + apiParam + ", apiPermission=" + apiPermission 
-//            + ", apiDescription=" + apiDescription + ", apiName=" + apiName + ", apiGroup=" 
-//            + apiGroup + ", apiSuccess=" + apiSuccess + ", method=" + method + ", url=" + url + '}';
-//    }
 
     @Override
     public String toString() {

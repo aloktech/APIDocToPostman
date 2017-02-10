@@ -1,0 +1,446 @@
+[{
+        "request": {
+            "method": "GET",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Find account by account id.",
+            "body": {
+                "mode": "formdata",
+                "formdata": [{
+                        "type": "file",
+                        "value": "file",
+                        "key": "file",
+                        "enabled": true
+                    }]
+            },
+            "url": "/r1/accounts/{id}"
+        },
+        "response": [],
+        "name": "Find an account by account id"
+    }, {
+        "request": {
+            "method": "GET",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "find all accounts",
+            "body": {
+                "mode": "formdata",
+                "formdata": [{
+                        "type": "file",
+                        "value": "file",
+                        "key": "file",
+                        "enabled": true
+                    }]
+            },
+            "url": "/r1/accounts"
+        },
+        "response": [],
+        "name": "find all accounts"
+    }, {
+        "request": {
+            "method": "POST",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Add a new account",
+            "body": {
+                "mode": "raw",
+                "raw": "{\"account_id\" : 0,\"account_name\" : \"\"}"
+            },
+            "url": "/r1/accounts"
+        },
+        "response": [],
+        "name": "Add a new account"
+    }, {
+        "request": {
+            "method": "PUT",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Update an Account",
+            "body": {
+                "mode": "raw",
+                "raw": "{\"account_id\" : 0,\"account_name\" : \"\"}"
+            },
+            "url": "/r1/accounts/{id}"
+        },
+        "response": [],
+        "name": "Update an Account"
+    }, {
+        "request": {
+            "method": "DELETE",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Delete an account by account id.",
+            "body": {
+                "mode": "raw",
+                "raw": ""
+            },
+            "url": "/r1/accounts/{id}"
+        },
+        "response": [],
+        "name": "Delete Account"
+    }, {
+        "request": {
+            "method": "GET",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Get Usage Detail Report.",
+            "body": {
+                "mode": "formdata",
+                "formdata": [{
+                        "type": "file",
+                        "value": "file",
+                        "key": "file",
+                        "enabled": true
+                    }]
+            },
+            "url": "/r1/usage/detailreport"
+        },
+        "response": [],
+        "name": "Get Usage Detail Report"
+    }, {
+        "request": {
+            "method": "GET",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Get Usage Summary Report.",
+            "body": {
+                "mode": "formdata",
+                "formdata": [{
+                        "type": "file",
+                        "value": "file",
+                        "key": "file",
+                        "enabled": true
+                    }]
+            },
+            "url": "/r1/usage/summaryreport"
+        },
+        "response": [],
+        "name": "Get Usage Summary Report"
+    }, {
+        "request": {
+            "method": "GET",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Get Token Cost.",
+            "body": {
+                "mode": "formdata",
+                "formdata": [{
+                        "type": "file",
+                        "value": "file",
+                        "key": "file",
+                        "enabled": true
+                    }]
+            },
+            "url": "/r1/tokencosts"
+        },
+        "response": [],
+        "name": "Token Cost User"
+    }, {
+        "request": {
+            "method": "PUT",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Update Token Cost",
+            "body": {
+                "mode": "raw",
+                "raw": "{\"tokencost\" : Double}"
+            },
+            "url": "/r1/tokencosts"
+        },
+        "response": [],
+        "name": "Update Token Cost"
+    }, {
+        "request": {
+            "method": "GET",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Get Token Calculation",
+            "body": {
+                "mode": "formdata",
+                "formdata": [{
+                        "type": "file",
+                        "value": "file",
+                        "key": "file",
+                        "enabled": true
+                    }]
+            },
+            "url": "/r1/tokencal"
+        },
+        "response": [],
+        "name": "Token Calculation"
+    }, {
+        "request": {
+            "method": "GET",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Get all Users",
+            "body": {
+                "mode": "formdata",
+                "formdata": [{
+                        "type": "file",
+                        "value": "file",
+                        "key": "file",
+                        "enabled": true
+                    }]
+            },
+            "url": "/r1/users"
+        },
+        "response": [],
+        "name": "GetAllUsers"
+    }, {
+        "request": {
+            "method": "PUT",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Update the user by user Id.",
+            "body": {
+                "mode": "raw",
+                "raw": "{\"first_name\" : \"\",\"last_name\" : \"\",\"email\" : \"\",\"roleid\" : 0}"
+            },
+            "url": "/r1/users/{id}"
+        },
+        "response": [],
+        "name": "Update User"
+    }, {
+        "request": {
+            "method": "PUT",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Change password",
+            "body": {
+                "mode": "raw",
+                "raw": "{\"username\" : \"\",\"oldpassword\" : \"\",\"newpassword\" : \"\",}"
+            },
+            "url": "/r1/users/{id}/changepassword"
+        },
+        "response": [],
+        "name": "Change password"
+    }, {
+        "request": {
+            "method": "GET",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Get Current user",
+            "body": {
+                "mode": "formdata",
+                "formdata": [{
+                        "type": "file",
+                        "value": "file",
+                        "key": "file",
+                        "enabled": true
+                    }]
+            },
+            "url": "/r1/users/currentuser"
+        },
+        "response": [],
+        "name": "Get Current user"
+    }, {
+        "request": {
+            "method": "POST",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Create a new user.",
+            "body": {
+                "mode": "raw",
+                "raw": "{\"first_name\" : \"\",\"last_name\" : \"\",\"email\" : \"\",\"password\" : \"\",\"roleid\" : 0}"
+            },
+            "url": "/r1/users"
+        },
+        "response": [],
+        "name": "Create User"
+    }, {
+        "request": {
+            "method": "POST",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }],
+            "description": "User Signin to Admin Console.",
+            "body": {
+                "mode": "raw",
+                "raw": "{\"username\"  :  \"\",\"password\"  :  \"\"}"
+            },
+            "url": "/r1/users/signin"
+        },
+        "response": [],
+        "name": "User Signin"
+    }, {
+        "request": {
+            "method": "DELETE",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Delete an user by user id.",
+            "body": {
+                "mode": "raw",
+                "raw": ""
+            },
+            "url": "/r1/users/{id}"
+        },
+        "response": [],
+        "name": "Delete User"
+    }, {
+        "request": {
+            "method": "GET",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Get Metrics Data",
+            "body": {
+                "mode": "formdata",
+                "formdata": [{
+                        "type": "file",
+                        "value": "file",
+                        "key": "file",
+                        "enabled": true
+                    }]
+            },
+            "url": "/r1/events/metricsevents"
+        },
+        "response": [],
+        "name": "Get Metrics Data"
+    }, {
+        "request": {
+            "method": "GET",
+            "header": [{
+                    "description": "",
+                    "value": "application/json",
+                    "key": "Content-Type"
+                }, {
+                    "description": "",
+                    "value": "Bearer",
+                    "key": "Authorization"
+                }],
+            "description": "Get Time Series Data",
+            "body": {
+                "mode": "formdata",
+                "formdata": [{
+                        "type": "file",
+                        "value": "file",
+                        "key": "file",
+                        "enabled": true
+                    }]
+            },
+            "url": "/r1/events/timeseries"
+        },
+        "response": [],
+        "name": "Get Time Series Data"
+    }]

@@ -1,0 +1,215 @@
+{
+    "variables": [],
+    "info": {
+        "name": "1.XOSPassport",
+        "_postman_id": "28fd6e9d-169d-6330-a442-efa284849a5c",
+        "description": "",
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Create Account",
+            "request": {
+                "url": "{{url}}/xospassport/api/r1/accounts",
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "description": ""
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "description": ""
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n  \"account\": {\r\n    \"name\": \"Debug Test\",\r\n    \"companyname\": \"Invicara\",\r\n    \"companyaddress\": \"Chennai\",\r\n    \"contactname\": \"QA\",\r\n    \"contactphone\": \"123456\",\r\n    \"details\": \"NA\",\r\n    \"type\": \"1\",\r\n    \"numberemployees\": 5\r\n  },\r\n  \"user\": {\r\n    \"email\": \"debug01@invicara.com\",\r\n    \"firstname\": \"API\",\r\n    \"lastname\": \"Test\",\r\n    \"address\": \"Chennai\",\r\n    \"phonenumber\": \"12345\",\r\n    \"companyname\": \"Invicara\",\r\n    \"title\": \"QA\",\r\n    \"password\": \"Bimassure@1\",\r\n    \"confirmpassword\": \"Bimassure@1\",\r\n    \"privacyaccepted\": \"true\",\r\n    \"eusa\": \"true\"\r\n  }\r\n}"
+                },
+                "description": ""
+            },
+            "response": []
+        },
+        {
+            "name": "SignIn",
+            "request": {
+                "url": "{{url}}/xospassport/api/r1/users/signin",
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "description": ""
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "description": ""
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "b": "{\r\n  \"email\": \"debug02@invicara.com\",\r\n  \"password\": \"Bimassure@1\",\r\n  \"accountid\": \"{{accountId}}\"\r\n  \r\n}"
+                },
+                "description": ""
+            },
+            "response": []
+        },
+        {
+            "name": "Send Invitation",
+            "request": {
+                "url": "{{url}}/xospassport/api/r1/accounts/invites",
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "description": ""
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "description": ""
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{authorization}}",
+                        "description": ""
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n  \"invitees\": [\r\n    {\r\n      \"email\": \"projectowner1@mailinator.com\",\r\n      \"roles\": [\r\n        2000\r\n      ],\r\n      \"context\": {\r\n        \"projects\": [\r\n          {{projectId}}\r\n        ]\r\n      },\r\n      \"msgparams\": [\r\n        \"NA\",\r\n        \"Project Owner\"\r\n      ]\r\n    },\r\n    \r\n  ]\r\n}"
+                },
+                "description": "Send invitation"
+            },
+            "response": []
+        },
+        {
+            "name": "Accept Invitation",
+            "request": {
+                "url": "{{url}}/xospassport/api/r1/accounts/members/{{code}}",
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "description": ""
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "description": ""
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n\t\"email\": \"projectowner1@mailinator.com\",\r\n \t\"firstname\": \"Invited\",\r\n \t\"lastname\": \"user\",\r\n \t\"address\": \"Chennai\",\r\n \t\"phonenumber\": \"123456\",\r\n \t\"companyname\": \"Invicara\",\r\n \t\"title\": \"QA\",\r\n \t\"password\": \"Bimassure@1\",\r\n \t\"confirmpassword\": \"Bimassure@1\",\r\n \t\"eusa\": \"true\",\r\n \t\"privacyaccepted\": \"true\",\r\n \t\"allownotifications\":\"true\"\r\n}"
+                },
+                "description": "Accept Invitation"
+            },
+            "response": []
+        },
+        {
+            "name": "Get Account Status",
+            "request": {
+                "url": "{{url}}/xospassport/api/r1/accounts/{{accountId}}",
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "description": ""
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "description": ""
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{authorization}}",
+                        "description": ""
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "file",
+                            "type": "file",
+                            "enabled": true,
+                            "value": ""
+                        }
+                    ]
+                },
+                "description": "Get Account Status"
+            },
+            "response": []
+        },
+        {
+            "name": "Get Account members",
+            "request": {
+                "url": "{{url}}/xospassport/api/r1/accounts/members",
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "description": ""
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "description": ""
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "{{authorization}}",
+                        "description": ""
+                    }
+                ],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "file",
+                            "type": "file",
+                            "enabled": true,
+                            "value": ""
+                        }
+                    ]
+                },
+                "description": "Get Account members"
+            },
+            "response": []
+        },
+        {
+            "name": "Delete Account",
+            "request": {
+                "url": "{{url}}/empiremanage/api/r1/accounts/{{accountId}}",
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "{{authorization}}",
+                        "description": ""
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "description": ""
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": ""
+                },
+                "description": "Delete Account"
+            },
+            "response": []
+        }
+    ]
+}

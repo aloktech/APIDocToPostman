@@ -6,6 +6,14 @@
 
 package com.imos.sample;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -76,36 +84,45 @@ public class APIDocumentToPostman {
         API_MAP.put("@apiSuccess", (d, ins) -> {
             ins.setApiSuccess(d);
         });
-//        API_MAP.put("@apiDefine", (d, ins) -> {
-//            ins.setApiDefine(d);
-//        });
-//        API_MAP.put("@apiHeader", (d, ins) -> {
-//            ins.setApiHeader(d);
-//        });
-//        API_MAP.put("@apiParamExample", (d, ins) -> {
-//            ins.setApiParamExample(d);
-//        });
-//        API_MAP.put("@apiError", (d, ins) -> {
-//            ins.setApiError(d);
-//        });
-//        API_MAP.put("@apiErrorExample", (d, ins) -> {
-//            ins.setApiErrorExample(d);
-//        });
-//        API_MAP.put("@apiSuccessExample", (d, ins) -> {
-//            ins.setApiSuccessExample(d);
-//        });
     }
 
     public static void main(String[] args) {
-        new APIDocumentToPostman().extract();
+        String filePath;
+        if (args.length > 0) {
+            filePath = args[0];
+        } else {
+            //                URL url = APIDocumentToPostman.class.getResourceAsStream("configuration/config.json");
+            StringBuilder builder = new StringBuilder();
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(APIDocumentToPostman.class
+                .getClass()
+                .getClassLoader()
+                //                .getResourceAsStream("configuration/config.json")))) {
+                .getResourceAsStream("sample.properties")))) {
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    builder.append(line);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                JSONObject json = new JSONObject(builder.toString());
+                filePath = json.getString("filePath");
+                new APIDocumentToPostman()
+                    .extract(filePath);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    private void extract() {
+    private void extract(String filePath) {
         int startIndex, endIndex;
         String startTag = "/**", endTag = "*/", fileType = ".java";
         List<APIData> apiDataList = new ArrayList<>();
         List<String> data = new ArrayList<>();
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get("/home/alok/Tools/InviRepo/AdminServices/AdminConsole/src/main/java/com/invicara/admin/console/rest"))) {
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(filePath))) {
             for (Path entry : stream) {
                 if (entry.toFile().getAbsolutePath().endsWith(fileType)) {
                     String builder = new String(Files.readAllBytes(entry), StandardCharsets.UTF_8);
@@ -225,30 +242,6 @@ public class APIDocumentToPostman {
         postman.put("info", info);
         JSONArray items = new JSONArray();
 
-//        JSONObject item = new JSONObject();
-//        item.put("name", "");
-//        JSONObject request = new JSONObject();
-//        request.put("url", "");
-//        request.put("method", "");
-//        JSONArray headers = new JSONArray();
-//        JSONObject header = new JSONObject();
-//        header.put("key", "");
-//        header.put("value", "");
-//        header.put("description", "");
-//        headers.put(header);
-//        request.put("header", headers);`` ````
-//        JSONObject body = new JSONObject();
-//        body.put("mode", "");
-//        body.put("raw", "");
-//        request.put("body", body);
-//        item.put("request", request);
-//        JSONArray responses = new JSONArray();
-//        JSONObject response = new JSONObject();
-//        responses.put(response);
-//        item.put("response", responses);
-//        items.put(item);
-//        postman.put("item", items);
-        //System.out.println(postman);
         group.entrySet().forEach(o -> {
             System.out.println(o.getKey());
             o.getValue().forEach(d -> {
