@@ -6,14 +6,8 @@
 
 package com.imos.sample;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -87,34 +81,22 @@ public class APIDocumentToPostman {
     }
 
     public static void main(String[] args) {
-        String filePath;
+        String folderPath = "";
         if (args.length > 0) {
-            filePath = args[0];
+            folderPath = args[0];
         } else {
-            //                URL url = APIDocumentToPostman.class.getResourceAsStream("configuration/config.json");
-            StringBuilder builder = new StringBuilder();
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(APIDocumentToPostman.class
-                .getClass()
-                .getClassLoader()
-                //                .getResourceAsStream("configuration/config.json")))) {
-                .getResourceAsStream("sample.properties")))) {
-
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    builder.append(line);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
             try {
-                JSONObject json = new JSONObject(builder.toString());
-                filePath = json.getString("filePath");
-                new APIDocumentToPostman()
-                    .extract(filePath);
-            } catch (JSONException e) {
+                JSONObject json = new JSONObject(new String(Files.readAllBytes(Paths.get(APIDocumentToPostman.class
+                    .getClassLoader()
+                    .getResource("configuration/config.json")
+                    .toURI())), StandardCharsets.UTF_8));
+                folderPath = json.getString("filePath");
+            } catch (IOException | URISyntaxException | JSONException e) {
                 e.printStackTrace();
             }
         }
+        new APIDocumentToPostman()
+            .extract(folderPath);
     }
 
     private void extract(String filePath) {
@@ -163,11 +145,9 @@ public class APIDocumentToPostman {
         data.stream().forEach(d -> {
             Matcher dm = dp.matcher(d);
             if (dm.find()) {
-//                System.out.println(d);
                 String str = d;
                 str = str.substring(str.indexOf(definePattern) + definePattern.length());
                 String key = str.substring(0, str.indexOf(lineBreak)).trim();
-//                System.out.println(key);
                 str = str.substring(str.indexOf(lineBreak) + 1).trim();
                 Matcher m = p.matcher(str);
                 String anno;
@@ -177,7 +157,6 @@ public class APIDocumentToPostman {
                     anno = anno.trim();
                     removeAnnoLength = anno.length();
                     str = str.substring(str.indexOf(anno) + removeAnnoLength);
-//                    str = str.substring(str.indexOf(lineBreak) + 1);
                     str = str.replaceAll("\\*/", "");
                     str = str.replaceAll("\\s*\\*\\s*", "");
                     str = str.replaceAll("\n", "");
@@ -210,19 +189,13 @@ public class APIDocumentToPostman {
                         }
                     }
                 }
-//                System.out.println(apiData);
                 apiDataList.add(apiData);
             }
 
         });
-        System.out.println(data.size());
         Map<String, List<APIData>> group = apiDataList.stream().collect(Collectors.groupingBy(d -> {
             return d.getApiGroup().toUpperCase();
         }));
-        System.out.println(group.size());
-        System.out.println(group);
-        System.out.println(DEFINE_MAP.size());
-        System.out.println(DEFINE_MAP);
 
         group.entrySet().forEach(o -> {
             System.out.println(o.getKey());
@@ -276,7 +249,7 @@ public class APIDocumentToPostman {
                                 body.put("mode", "raw");
                                 body.put("raw", dat);
                             }
-                        } catch (Exception e) {
+                        } catch (JSONException e) {
                             System.out.println(dat);
                         }
 
